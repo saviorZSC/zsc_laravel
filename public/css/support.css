@@ -1,0 +1,78 @@
+.first-section{
+    padding-top:50px;
+    background-color: #EDEDED;
+}
+.input-control{
+    width: 70%!important;
+    margin:50px auto;
+}
+@media(max-width: 768px) {
+    .input-control{
+        width: 100%!important;
+        margin:50px auto;
+    }
+}
+
+.second-section{
+    padding: 30px 0px;
+}
+.a-thumbnail{
+    text-decoration: none;
+    background-color: #EDEDED;
+}
+.a-thumbnail:hover{
+    text-decoration: none;
+}
+.a-thumbnail p{
+    font-size:20px;
+    line-height: 24px;
+}
+.icon-control{
+    font-size:160px;
+    font-weight: 100;
+    color:#03A9F4;
+}
+
+
+.list-icon-control{
+    color: #03A9F4;
+    font-size: 20px;
+    padding: 2px 10px 2px 0px;
+}
+.icon-set{
+    font-size:80px;
+    font-weight: 100;
+    color:#03A9F4;
+}
+
+@media(min-width: 768px){
+    .icon-set{
+        font-size:60px;
+        font-weight: 100;
+        color:#03A9F4;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .icon-set{
+        font-size:40px;
+        font-weight: 100;
+        color:#03A9F4;
+    }
+}
+@media(max-width:768px ) {
+    .icon-set{
+        font-size:60px;
+        font-weight: 100;
+        color:#03A9F4;
+    }
+}
+.thumbnail-decoration:hover{
+    text-decoration: none;
+    vertical-align: middle;
+}
+.thumbnail-decoration span{
+    display: inline-block;
+    margin:auto 5px;
+    font-size: 20px;
+    vertical-align: middle;
+}
