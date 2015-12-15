@@ -15,7 +15,17 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         // $this->call(UserTableSeeder::class);
+        //执行Articles操作
+        $this->call('ArticleTableSeeder');
 
         Model::reguard();
+    }
+}
+
+//添加随机数据
+class ArticleTableSeeder extends Seeder{
+    public function run(){
+        App\Models\Article::truncate();
+        factory(App\Models\Article::class,20)->create();
     }
 }
