@@ -1,0 +1,44 @@
+.first-section{
+    margin-top:50px;
+}
+
+.project_item{
+    position:relative;
+}
+.project_item a{
+    text-decoration: none;
+    color:#FFFFFF;
+}
+.project_item a:hover{
+    text-decoration: none;
+}
+.project_decoration{
+    width: 90%;
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    color:#ffffff;
+}
+.project_decoration h4,.project_decoration p{
+    display:inline-block;
+}
+.inline{
+    display: inline;
+}
+.padding_set{
+    padding-right: 10px;
+}
+.sortable-content{
+    min-height: 400px;
+}
+#myTabContent1{
+    margin: 8px 0;
+}
+.item-height{
+    display: block;
+    position: relative;
+    height: 42px;
+}
+.pull-set{
+    margin-left:3px;
+}

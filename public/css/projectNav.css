@@ -1,0 +1,19 @@
+.modal-header{
+    background-color: #03A9F4;
+}
+.modal-title{
+    color:#ffffff;
+    font-family: "Myriad Set Pro","Lucida Grande","Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
+}
+.project_title{
+    color:#7F7F7F;
+    font-family: "Myriad Set Pro","Lucida Grande","Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
+}
+#form1{
+    padding: 10px;
+}
+#form1 label{
+    color:#808080;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+}
