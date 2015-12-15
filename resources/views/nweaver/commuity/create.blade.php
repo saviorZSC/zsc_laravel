@@ -10,8 +10,17 @@
     <div class="editBody">
         <form action="/commuity/store" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" name="title"/>
+            </div>
             <!-- 加载编辑器的容器 -->
             <script id="container" name="content" type="text/plain"></script>
+            <br />
+            <div class="form-group">
+                <label for="publish_time">Publish_time</label>
+                <input type="date" class="form-control" name="publish_time" />
+            </div>
             <br />
             <input type="submit" class="btn btn-primary" value="submit" />
         </form>

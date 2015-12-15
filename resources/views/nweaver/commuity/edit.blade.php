@@ -8,11 +8,16 @@
         </ol>
     </div>
     <div class="editBody">
-        <form action="/commuity/store" method="post">
+        <form action="/commuity/{{$article->id}}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            <input type="hidden" name="_method" value="PATCH" />
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" name="title" value="{{$article->title}}"/>
+            </div>
             <!-- 加载编辑器的容器 -->
             <script id="container" name="content" type="text/plain">
-
+                {!!$article->content!!}
             </script>
             <br />
             <input type="submit" class="btn btn-primary" value="submit" />

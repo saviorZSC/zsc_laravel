@@ -20,12 +20,12 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="hidden-xs hidden-sm"><a class="padding-clear inblock" href="#"><img src=""  class="user-image-size img-circle"/> </a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle inblock" data-toggle="dropdown">{{"Login"}}<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle inblock" data-toggle="dropdown">{{ isset(Auth::user()->name)?Auth::user()->name:"Login" }}<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#">UserInfo</a> </li>
                         <li><a href="#">Project</a> </li>
                         <li><a href="#">Setting</a> </li>
-                        <li><a href="#"></a> </li>
+                        <li><a href="/auth/logout">Logout</a> </li>
                     </ul>
                 </li>
             </ul>
