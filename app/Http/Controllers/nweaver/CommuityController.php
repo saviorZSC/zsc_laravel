@@ -4,6 +4,8 @@ namespace App\Http\Controllers\nweaver;
 
 use Illuminate\Http\Request;
 
+use App\Models\Article;
+use Carbon\Carbon;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -17,6 +19,10 @@ class CommuityController extends Controller
     public function index()
     {
         //
+        $articles = Article::where('publish_time','<=',Carbon::now())
+                        ->orderBy('publish_time','desc')
+                        ->paginate(15);
+        return view('nweaver.commuity',compact('articles'));
     }
 
     /**
@@ -26,7 +32,8 @@ class CommuityController extends Controller
      */
     public function create()
     {
-        //
+        //返回/resource/view/nweaver/commuity下的create.blade.php页面
+        //创建文章
         return view('nweaver.commuity.create');
     }
 
@@ -37,10 +44,13 @@ class CommuityController extends Controller
      */
     public function store(Request $request)
     {
+        //测试运行逻辑是否成功
+        /*$data = $request->all();
+        return $data;*/
+        Article::create($request->all());
+        return redirect('/commuity');
+
         //
-        //$data = $request->input('content');
-        $data = $request->all();
-        return $data;
     }
 
     /**
@@ -52,6 +62,10 @@ class CommuityController extends Controller
     public function show($id)
     {
         //
+        $article = Article::find($id);
+//        dd($article);
+        return view('nweaver.commuity.show',['article' =>$article]);
+
     }
 
     /**
@@ -62,8 +76,10 @@ class CommuityController extends Controller
      */
     public function edit($id=null)
     {
-        //
-        return view('nweaver.commuity.edit');
+        //返回/resource/view/nweaver/commuity下的create.blade.php页面
+        //编辑文章文章
+        $article = Article::find($id);
+        return view('nweaver.commuity.edit',compact('article'));
     }
 
     /**
@@ -72,9 +88,12 @@ class CommuityController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request,$id)
     {
         //
+        //dd($request->input());
+        Article::updateOrCreate(['id'=>$id],$request->input());
+        return redirect('/commuity');
     }
 
     /**
@@ -86,5 +105,6 @@ class CommuityController extends Controller
     public function destroy($id)
     {
         //
+
     }
 }

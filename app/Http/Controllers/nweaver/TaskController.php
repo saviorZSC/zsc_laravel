@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\nweaver;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
-use Carbon\Carbon;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class NweaverController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,19 +18,6 @@ class NweaverController extends Controller
     public function index()
     {
         //
-        return view('nweaver.index');
-    }
-    public  function template(){
-        return view('nweaver.template');
-    }
-    public  function support(){
-        return view('nweaver.support');
-    }
-    /*public  function commuity(){
-        return view('nweaver.commuity');
-    }*/
-    public  function test(){
-        return view('nweaver.test');
     }
 
     /**
@@ -41,7 +28,6 @@ class NweaverController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -49,9 +35,12 @@ class NweaverController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        //
+        //接受任务创建表单的数据
+        //dd($date);//测试数据正确性
+        Task::create($request->all());
+        return redirect('/feature/project/'.$request->input('project_id'));
     }
 
     /**
@@ -63,6 +52,8 @@ class NweaverController extends Controller
     public function show($id)
     {
         //
+        $task = Task::find($id)->toJson();
+        return $task;
     }
 
     /**
@@ -74,7 +65,6 @@ class NweaverController extends Controller
     public function edit($id)
     {
         //
-
     }
 
     /**
@@ -83,9 +73,14 @@ class NweaverController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request,$id)
     {
-        //
+        $info = Task::updateOrCreate(['id'=>$id],$request->input());
+        if($info){
+            return "Update success";
+        }else{
+            return 'Update fail';
+        }
     }
 
     /**
@@ -97,5 +92,11 @@ class NweaverController extends Controller
     public function destroy($id)
     {
         //
+        $info = Task::find($id)->delete();
+        if($info){
+            return "Delete success";
+        }else{
+            return 'Delete fail';
+        }
     }
 }
