@@ -1,3 +1,2 @@
 # zsc_laravel
-this is private laravel project
-Now to update
+这是基于laravel开发的练习项目。
