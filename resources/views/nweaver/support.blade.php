@@ -1,6 +1,6 @@
 @extends('nweaver.app')
 @section('link')
-    <link href="/css/support.css" rel="stylesheet" type="text/css" />
+    <link href="{{url('/css/support.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     @include('nweaver.nav')

@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 <h4 class="project_title">Project information</h4>
-                <form id="form1" role="form" action="/feature/project/store" method="post">
+                <form id="form1" role="form" action="{{url('/feature/project/store')}}" method="post">
                     {{csrf_field()}}
                     <div class="form-group">
                         <label class="control-label">Project Cover</label>
@@ -52,15 +52,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="" href="/"><img class="navbar-nav-height nav-marginright" src="/image/logo_en.png" alt="N-weaver log" /></a>
+            <a class="" href="{{url('/')}}"><img class="navbar-nav-height nav-marginright" src="{{url('/image/logo_en.png')}}" alt="N-weaver log" /></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse navbar-exl-collapse">
             <ul id="navbarul" class="nav navbar-nav">
-                <li><a href="/feature/project">Project</a></li>
-                <li><a href="/feature/enterprise">Enterprise</a></li>
-                <li><a href="/feature/mine">Mine</a></li>
-                <li class="hidden-sm"><a href="/feature/calendar">Calendar</a></li>
-                <li class="hidden-sm"><a href="/feature/Message">Message</a></li>
+                <li><a href="{{url('/feature/project')}}">Project</a></li>
+                <li><a href="{{url('/feature/enterprise')}}">Enterprise</a></li>
+                <li><a href="{{url('/feature/mine')}}">Mine</a></li>
+                <li class="hidden-sm"><a href="{{url('/feature/calendar')}}">Calendar</a></li>
+                <li class="hidden-sm"><a href="{{url('/feature/Message')}}">Message</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="hidden-xs hidden-sm">
@@ -110,7 +110,7 @@
                     </li>
                 @endif
                 @if(Auth::guest())
-                    <li><a href="/auth/login">Login</a></li>
+                    <li><a href="{{url('/auth/login')}}">Login</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle inblock" data-toggle="dropdown">{{Auth::user()->name}}<span class="caret"></span></a>
@@ -129,7 +129,7 @@
                             </li>
                             <li class="container-fluid">
                                 <div class="col-md-3 col-sm-3 col-xs-2"><i class="icon-signout"></i></div>
-                                <div class="col-md-9 col-sm-9 col-xs-10"><a href="/auth/logout">Logout</a></div>
+                                <div class="col-md-9 col-sm-9 col-xs-10"><a href="{{url('/auth/logout')}}">Logout</a></div>
                             </li>
                         </ul>
                     </li>

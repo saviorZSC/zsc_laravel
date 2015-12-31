@@ -10,7 +10,7 @@
                 <div class="col-md-12 headhandle text-center ">
                     <h1>Great collaboration tools</h1>
                     <p>N-weaver let's share,communication and achieve</p>
-                    <span ><a class="btn btn-primary btn-lg" > Sign up for free</a></span>
+                    <span ><a class="btn btn-primary btn-lg" href="{{url('/auth/register')}}"> Sign up for free</a></span>
                 </div>
             </div>
         </div>
@@ -121,7 +121,7 @@
                 <div class="col-md-12 headhandlefifth text-center">
                     <h3>Let's join us and improve efficiency</h3>
                     <p>Try N-weaver to work for your team.</p>
-                    <a class="bootonset">Sing up for fee</a>
+                    <a class="bootonset" href="{{url('/auth/register')}}">Sing up for fee</a>
                 </div>
             </div>
         </div>

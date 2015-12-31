@@ -27,6 +27,7 @@
                             <li><a href="#" class="">Open Source</a></li>
                             <li><a href="#" class="">Open Platform</a></li>
                             <li><a href="#" class="">Commuity</a></li>
+                            <li><a href="{{url('/blog')}}" class="">Blog</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-6">

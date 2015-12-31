@@ -1,6 +1,6 @@
 @extends('nweaver.app')
 @section('link')
-    <link href="/css/commuity.css" rel="stylesheet" type="text/css" />@endsection
+    <link href="{{url('/css/commuity.css')}}" rel="stylesheet" type="text/css" />@endsection
 @section('content')
     @include('nweaver.nav')
 
@@ -22,16 +22,21 @@
                     </div>
                     <div class="col-md-3 col-sm-4 col-xs-5">
                         <div class="text-center">
-                            <a class="btn btn-primary" href="commuity/create">Publish article</a>
+                            <a class="btn btn-primary" href="{{url('/commuity/create')}}">Publish article</a>
                         </div>
                     </div>
                     <div class="col-md-12 commuity-content">
                         <ul class="list-group">
-                            <li class="list-group-item list-group-item-info"><span class="commuity-content-title">Commuity content</span></li>
+                            <li class="list-group-item list-group-item-info">
+                                <span class="commuity-content-title">
+                                    Commuity content
+                                    <small><em>( Page{{ $articles->currentPage() }} of {{ $articles->lastPage() }} )</em></small>
+                                </span>
+                            </li>
                             @foreach($articles as $article)
                                 <li class="list-group-item">
                                     <i class=" icon-question-sign list-icon-control "></i>
-                                    <a href="/commuity/{{$article->id}}">{{$article->title}}({{$article->publish_time}})</a>
+                                    <a href="{{url('/commuity/'.$article->id)}}">{{$article->title}}({{$article->publish_time}})</a>
                                 </li>
                             @endforeach
                         </ul>

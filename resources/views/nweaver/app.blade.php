@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>N-weaver is a application of teamwork</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
-    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="/css/navAndFooter.css" rel="stylesheet" type="text/css" />
+    <link href="{{url('/css/bootstrap.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url('/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url('/css/navAndFooter.css')}}" rel="stylesheet" type="text/css" />
     @yield('link')
 </head>
 <body>
 @yield('content')
-<script src="/javascript/jquery-2.1.4.min.js" ></script>
-<script src="/javascript/bootstrap.min.js" ></script>
+<script src="{{url('/javascript/jquery-2.1.4.min.js')}}" ></script>
+<script src="{{url('/javascript/bootstrap.min.js')}}" ></script>
 @yield('script')
 </body>
 </html>

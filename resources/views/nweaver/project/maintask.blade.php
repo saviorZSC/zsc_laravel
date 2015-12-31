@@ -45,7 +45,7 @@
         </div>
     </div>
     <!--查看tasks内容的模态框-->
-    <div class="modal" id="taskModalshow" tabindex="-1" role="dialog" aria-labelledby="myModallable" aria-hidden="true">
+    <div class="modal taskModalshow" id="taskModalshow" tabindex="-1" role="dialog" aria-labelledby="myModallable" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -91,7 +91,7 @@
 @endif
 <div class="sortable container-fluid">
     <div class="col-md-2 col-sm-3">
-        <div class="panel panel-info sortable-content taskcontainer" title="abc" data-whatever="abc">
+        <div class="panel panel-info sortable-content taskcontainer" >
             <div class="panel-heading panel-info panel-set">
                 <h4 class="inline tasklist" tabindex="0" data-toggle="popover" data-trigger="focus" title="Operation tips"
                         data-content="">

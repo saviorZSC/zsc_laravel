@@ -1,6 +1,6 @@
 @extends('nweaver.app')
 @section('link')
-    <link href="/css/template.css" rel="stylesheet" type="text/css" />
+    <link href="{{url('/css/template.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     @include('nweaver.nav')
@@ -16,7 +16,7 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img class="carouselimagesize" src="image/first-section-bg.jpg" alt="First slide" />
+                    <img class="carouselimagesize" src="{{url('image/first-section-bg.jpg')}}" alt="First slide" />
                     <div class="carousel-caption carousel-content">
                         <h3>College</h3>
                         <p>The effective Management of course. </p>
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img class="carouselimagesize" src="image/first-section-bg2.jpg" alt="Second slide" />
+                    <img class="carouselimagesize" src="{{url('image/first-section-bg2.jpg')}}" alt="Second slide" />
                     <div class="carousel-caption carousel-content">
                         <h3>Advertisement</h3>
                         <p>The count to Advertisement's distribution. </p>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img class="carouselimagesize" src="image/first-section-bg3.jpg" alt="Third slide" />
+                    <img class="carouselimagesize" src="{{url('image/first-section-bg3.jpg')}}" alt="Third slide" />
                     <div class="carousel-caption carousel-content">
                         <h3>Business</h3>
                         <p>The effective Management of  transaction. </p>
@@ -64,7 +64,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <a href="#"><img class="image-size" src="/image/office-610x407.jpg" alt="" /></a>
+                            <a href="#"><img class="image-size" src="{{url('/image/office-610x407.jpg')}}" alt="" /></a>
                         </div>
                         <div class="panel-heading panel-info panel-set">
                             <h4>Example</h4>
@@ -75,7 +75,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <a href="#"><img class="image-size" src="/image/office-610x407.jpg" alt="" /></a>
+                            <a href="#"><img class="image-size" src="{{url('/image/office-610x407.jpg')}}" alt="" /></a>
                         </div>
                         <div class="panel-heading panel-info panel-set">
                             <h4>Example</h4>
@@ -86,7 +86,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <a href="#"><img class="image-size" src="/image/office-610x407.jpg" alt="" /></a>
+                            <a href="#"><img class="image-size" src="{{url('/image/office-610x407.jpg')}}" alt="" /></a>
                         </div>
                         <div class="panel-heading panel-info panel-set">
                             <h4>Example</h4>
@@ -97,7 +97,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <a href="#"><img class="image-size" src="/image/office-610x407.jpg" alt="" /></a>
+                            <a href="#"><img class="image-size" src="{{url('/image/office-610x407.jpg')}}" alt="" /></a>
                         </div>
                         <div class="panel-heading panel-info panel-set">
                             <h4>Example</h4>
@@ -108,7 +108,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <a href="#"><img class="image-size" src="/image/office-610x407.jpg" alt="" /></a>
+                            <a href="#"><img class="image-size" src="{{url('/image/office-610x407.jpg')}}" alt="" /></a>
                         </div>
                         <div class="panel-heading panel-info panel-set">
                             <h4>Example</h4>
@@ -119,7 +119,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <a href="#"><img class="image-size" src="/image/office-610x407.jpg" alt="" /></a>
+                            <a href="#"><img class="image-size" src="{{url('/image/office-610x407.jpg')}}" alt="" /></a>
                         </div>
                         <div class="panel-heading panel-info panel-set">
                             <h4>Example</h4>
@@ -135,7 +135,7 @@
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <a href="#"><img class="image-size" src="/image/pannel-example1.jpg" alt="" /></a>
+                            <a href="#"><img class="image-size" src="{{url('/image/pannel-example1.jpg')}}" alt="" /></a>
                         </div>
                         <div class="panel-heading panel-info panel-set">
                             <h4>Example</h4>
@@ -146,7 +146,7 @@
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <a href="#"><img class="image-size" src="/image/pannel-example2.jpg" alt="" /></a>
+                            <a href="#"><img class="image-size" src="{{url('/image/pannel-example2.jpg')}}" alt="" /></a>
                         </div>
                         <div class="panel-heading panel-info panel-set">
                             <h4>Example</h4>
@@ -157,7 +157,7 @@
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <a href="#"><img class="image-size" src="/image/pannel-example3.jpg" alt="" /></a>
+                            <a href="#"><img class="image-size" src="{{url('/image/pannel-example3.jpg')}}" alt="" /></a>
                         </div>
                         <div class="panel-heading panel-info panel-set">
                             <h4>Example</h4>
@@ -168,7 +168,7 @@
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <a href="#"><img class="image-size" src="/image/pannel-example4.jpg" alt="" /></a>
+                            <a href="#"><img class="image-size" src="{{url('/image/pannel-example4.jpg')}}" alt="" /></a>
                         </div>
                         <div class="panel-heading panel-info panel-set">
                             <h4>Example</h4>
@@ -179,7 +179,7 @@
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <a href="#"><img class="image-size" src="/image/pannel-example5.jpg" alt="" /></a>
+                            <a href="#"><img class="image-size" src="{{url('/image/pannel-example5.jpg')}}" alt="" /></a>
                         </div>
                         <div class="panel-heading panel-info panel-set">
                             <h4>Example</h4>
@@ -190,7 +190,7 @@
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <div class="panel panel-info">
                         <div class="panel-body">
-                            <a href="#"><img class="image-size" src="/image/pannel-example6.jpg" alt="" /></a>
+                            <a href="#"><img class="image-size" src="{{url('/image/pannel-example6.jpg')}}" alt="" /></a>
                         </div>
                         <div class="panel-heading panel-info panel-set">
                             <h4>Example</h4>

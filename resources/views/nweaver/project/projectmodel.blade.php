@@ -2,6 +2,7 @@
 @section('link')
     <link href="{{url('/css/projectNav.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{url('/css/project.css')}}" rel="stylesheet" type="text/css" />
+    @yield('link')
 @endsection
 @section('content')
     @include('nweaver.project.nav')
@@ -15,7 +16,7 @@
                     @foreach($ownProjects as $project)
                         <li class="">
                             <div class="project_item_list">
-                                <a href="{{url('/feature/project/'.$project->id)}}" class="thumbnail a-thumbnail item_margin_set">
+                                <a href="{{url('/feature/project/'.$project->id).'/task'}}" class="thumbnail a-thumbnail item_margin_set">
                                     <img src="{{$project->img_url}}" alt="" />
                                 </a>
                                 <div class="project_decoration_list">
@@ -29,59 +30,15 @@
                     @endforeach
                 </ul>
             </li>
-            <li><a href="#task" data-toggle="tab">Tasks</a></li>
-            <li><a href="#share" data-toggle="tab">Share</a></li>
-            <li><a href="#file" data-toggle="tab">File</a></li>
-            <li><a href="#agenda" data-toggle="tab">Schedule</a></li>
-            <li><a href="#tabs" data-toggle="tab">Labs</a></li>
+            <li><a @if (Request::is('feature/project/'.$project_id.'/task')) href="#task" class='active'  data-toggle="tab" @else href="{{url('/feature/project/'.$project_id.'/task')}}" @endif>Tasks</a></li>
+            <li><a @if (Request::is('feature/project/'.$project_id.'/share')) href="#share" class='active'  data-toggle="tab" @else href="{{url('/feature/project/'.$project_id.'/share')}}" @endif >Share</a></li>
+            <li><a @if (Request::is('feature/project/'.$project_id.'/file')) href="#file" class='active'  data-toggle="tab" @else href="{{url('/feature/project/'.$project_id.'/file')}}" @endif >File</a></li>
+            <li><a @if (Request::is('feature/project/'.$project_id.'/schedule')) href="#schedule" class='active'  data-toggle="tab" @else href="{{url('/feature/project/'.$project_id.'/schedule')}}" @endif>Schedule</a></li>
+            <li><a @if (Request::is('feature/project/'.$project_id.'/labs')) href="#labs" class='active'  data-toggle="tab" @else href="{{url('/feature/project/'.$project_id.'/labs')}}" @endif >Labs</a></li>
             <li><a href="#setting" data-toggle="tab">Setting</a></li>
         </ul>
         <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade in active" id="task">
-                <ul id="myTab1" class="nav nav-tabs">
-                    <li class="dropdown">
-                        <a href="#" id="myTabDrop2" class="dropdown-toggle"
-                           data-toggle="dropdown">Option<b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2">
-                            <li><a href="#main" tabindex="-1" data-toggle="tab">Main tasks</a></li>
-                            <li><a href="#plan" tabindex="-1" data-toggle="tab">Planning tasks</a></li>
-                            <li><a href="#run" tabindex="-1" data-toggle="tab">Running tasks</a></li>
-                            <li><a href="#finish" tabindex="-1" data-toggle="tab">Finish</a></li>
-                            <li><a href="#undefine" tabindex="-1" data-toggle="tab">Undefine</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div id="myTabContent1" class="tab-content">
-                    <div class="tab-pane fade in active" id="main">
-                        @include('nweaver.project.maintask')
-                    </div>
-                    <div class="tab-pane fade" id="plan">
-                        @include('nweaver.project.plantask')
-                    </div>
-                    <div class="tab-pane fade" id="run">
-                        run
-                    </div>
-                    <div class="tab-pane fade" id="finish">
-                        finish
-                    </div>
-                    <div class="tab-pane fade" id="undefine">
-                        undefine
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="share">
-                This is share.
-            </div>
-            <div class="tab-pane fade" id="file">
-                this is file
-            </div>
-            <div class="tab-pane fade" id="agenda">
-                this is schedule
-            </div>
-            <div class="tab-pane fade" id="tabs">
-                This is labs
-            </div>
+            @yield('tab-pane')
             <div class="tab-pane fade" id="setting">
                 <ul id="myTab2" class="nav nav-tabs">
                     <li class="active col-md-4 text-center" style="padding: 0;">
@@ -153,16 +110,16 @@
         });
 
 
-        $(document).ready(function(){
-            $("#taskModalshow").on("show.bs.modal",function(event){
+        $(document).ready(function() {
+            $("#taskModalshow").on("show.bs.modal", function (event) {
                 var span = $(event.relatedTarget);
                 var recipient = span.data("whatever");
                 //console.info(recipient);
-                $("#url").attr('data-whatever',recipient);
-                $("#result").attr('class',"text-center text-success");
+                $("#url").attr('data-whatever', recipient);
+                $("#result").attr('class', "text-center text-success");
                 $("#result").text("Request Data,please wait...");
-                $.get(recipient,function(data){
-                    var json = eval("("+data+")");
+                $.get(recipient, function (data) {
+                    var json = eval("(" + data + ")");
                     //console.info(json);
                     //$("#result").text(json);//测试获取数据
                     $("#result").text('');
@@ -170,14 +127,14 @@
                     $("#taskname").val(json.name);
                     $("#tasktitle").val(json.title);
                     $("#taskcontent").text(json.content);
-                }).error(function(){
-                    $("#result").attr('class',"text-center text-danger");
+                }).error(function () {
+                    $("#result").attr('class', "text-center text-danger");
                     $("#result").text("Content fail");
                 });
-            }),function(){
-                var test = $("#url").removeAttr('data-whatever');
-                alert(test);
-            }
+            });
+            $("#taskModalshow").on('hidden.bs.modal',function(){
+                $("#url").removeAttr('data-whatever');
+            });
         });
         $("#updatetasks").on('click',function(){
             var url =$("#url").data("whatever");
@@ -272,5 +229,134 @@
                 }
             })
         });
+
+
+        //分组的js
+        $(".tasksactive").on('click',function(){
+            var tasklist = $(this).parents('.taskcontainer').find('.tasklist');
+            var url = $(this).parents('._tasks').find('.tasksshow').data("whatever");
+            //console.info(url);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type:"PATCH",
+                url:url,
+                data:{flag:1},
+                success:function(data){
+                    tasklist.attr("data-content",data);
+                    tasklist.popover('show');
+                    setTimeout(function(){
+                        window.location.reload();
+                    },1500);
+
+                }
+            })
+        });
+        $(".tasksfinish").on('click',function(){
+            var tasklist = $(this).parents('.taskcontainer').find('.tasklist');
+            var url = $(this).parents('._tasks').find('.tasksshow').data("whatever");
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type:"PATCH",
+                url:url,
+                data:{flag:2},
+                success:function(data){
+                    tasklist.attr("data-content",data);
+                    tasklist.popover('show');
+                    setTimeout(function () {
+                        window.location.reload();
+                    },1500);
+
+                }
+            })
+        });
+
+
+
+        $(document).ready(function(){
+            $("#taskModalshowplan").on("show.bs.modal",function(event){
+                var span = $(event.relatedTarget);
+                var recipient = span.data("whatever");
+                //console.info(recipient);
+                var modal = $(this);
+                modal.find(".url").attr('data-whatever',recipient);
+                modal.find(".result").attr('class',"result text-center text-success");
+                modal.find(".result").text("Request Data,please wait...");
+                $.get(recipient,function(data){
+                    var json = eval("("+data+")");
+                    //console.info(json);
+                    //$("#result").text(json);//测试获取数据
+                    modal.find(".result").text('');
+                    modal.find(".taskflag").val(json.flag);
+                    modal.find(".taskname").val(json.name);
+                    modal.find(".tasktitle").val(json.title);
+                    modal.find(".taskcontent").text(json.content);
+                }).error(function(){
+                    modal.find(".result").attr('class'," result text-center text-danger");
+                    modal.find(".result").text("Content fail");
+                });
+            }),function(){
+                //清除不了数据
+                $(".url").removeAttr('data-whatever');
+            }
+        });
+        $(".updatetasks").on('click',function(){
+            var modal = $(this).parents('.modal-content')
+            var url = modal.find('.url').data("whatever");
+            //console.info(url);
+            var tasksdata = {name:modal.find(".taskname").val(),title:modal.find(".tasktitle").val(),
+                content:modal.find(".taskcontent").val(),flag:modal.find(".taskflag").val()}
+            //console.info(tasksdata);//测试数据
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type:"PATCH",
+                url:url,
+                data:tasksdata,
+                success:function(data){
+                    var result = modal.find('.result');
+                    console.info(result);
+                    result.attr('class',"text-center text-success");
+                    result.text(data);
+                    result.fadeOut(2000);
+                    setTimeout(function(){
+                        window.location.reload();
+                    },2001);
+                }
+            })
+        });
+        $(".deletetasks").on('click',function(){
+            var modal = $(this).parents('.modal-content')
+            var url = modal.find('.url').data("whatever");
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type:"DELETE",
+                url:url,
+                success:function(data){
+                    var result = modal.find('.result');
+                    result.attr('class',"text-center text-success");
+                    result.text(data);
+                    result.fadeOut(1000);
+                    setTimeout(function(){
+                        window.location.reload();
+                    },1001);
+                }
+            })
+        });
     </script>
+    @yield('script')
 @endsection

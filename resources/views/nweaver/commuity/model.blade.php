@@ -1,6 +1,6 @@
 @extends('nweaver.app')
 @section('link')
-    <link href="/css/commuity/create.css" type="text/css" rel="stylesheet" />
+    <link href="{{url('/css/commuity/create.css')}}" type="text/css" rel="stylesheet" />
 @endsection
 @section('content')
     @include('nweaver.nav')

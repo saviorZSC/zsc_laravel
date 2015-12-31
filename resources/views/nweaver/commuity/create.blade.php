@@ -2,13 +2,13 @@
 @section('body')
     <div>
         <ol class="breadcrumb ">
-            <li><a href="/">N-weaver</a></li>
-            <li><a href="/commuity">Commuity</a></li>
+            <li><a href="{{url('/')}}">N-weaver</a></li>
+            <li><a href="{{url('/commuity')}}">Commuity</a></li>
             <li class="active">CreatePage</li>
         </ol>
     </div>
     <div class="editBody">
-        <form action="/commuity/store" method="post">
+        <form action="{{url('/commuity/store')}}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <div class="form-group">
                 <label for="title">Title:</label>
@@ -25,9 +25,9 @@
             <input type="submit" class="btn btn-primary" value="submit" />
         </form>
             <!-- 配置文件 -->
-            <script type="text/javascript" src="/javascript/ueditor/ueditor.config.js"></script>
+            <script type="text/javascript" src="{{url('/javascript/ueditor/ueditor.config.js')}}"></script>
             <!-- 编辑器源码文件 -->
-            <script type="text/javascript" src="/javascript/ueditor/ueditor.all.js"></script>
+            <script type="text/javascript" src="{{url('/javascript/ueditor/ueditor.all.js')}}"></script>
             <!-- 实例化编辑器 -->
             <script type="text/javascript">
                 //var ue = UE.getEditor('container');
