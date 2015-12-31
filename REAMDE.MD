@@ -1,2 +1,1 @@
-this is private laravel project
-Now to update
+This is a test project builded by laravel.
