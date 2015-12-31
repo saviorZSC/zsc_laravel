@@ -22,6 +22,26 @@
 .project_decoration h4,.project_decoration p{
     display:inline-block;
 }
+.project_item_list{
+    position:relative;
+}
+.project_item_list a{
+    text-decoration: none;
+    color:#FFFFFF;
+}
+.project_item_list a:hover{
+    text-decoration: none;
+}
+.project_decoration_list{
+    width: 80%;
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    color:#ffffff;
+}
+.project_decoration_list h4,.project_decoration_list p{
+    display:inline-block;
+}
 .inline{
     display: inline;
 }
@@ -41,4 +61,7 @@
 }
 .pull-set{
     margin-left:3px;
+}
+.item_margin_set{
+    margin-bottom: 3px!important;
 }
