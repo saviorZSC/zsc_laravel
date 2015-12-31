@@ -38,9 +38,10 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //接受任务创建表单的数据
+        //$date = $request->all();
         //dd($date);//测试数据正确性
         Task::create($request->all());
-        return redirect('/feature/project/'.$request->input('project_id'));
+        return redirect('/feature/project/'.$request->input('project_id').'/task');
     }
 
     /**

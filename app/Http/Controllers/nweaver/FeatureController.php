@@ -31,10 +31,12 @@ class FeatureController extends Controller
         $user = User::find(Auth::user()->id);
         //dd($user);
         $ownProject = $user->projects;
+        $finishProject = $user->projects()->where('status','=','0')->get();
         /*foreach($ownProject as $p){
             echo $p->title;
         }*/
-        return view('nweaver.project.project',['ownProject'=>$ownProject]);
+        return view('nweaver.project.project',['ownProject'=>$ownProject,
+                                                'finishProject'=>$finishProject]);
     }
 
     /**
@@ -62,15 +64,20 @@ class FeatureController extends Controller
 
 
     public function show($id){
+        //查找该用户的所有项目
+        $user = User::find(Auth::user()->id);
+        $ownProjects = $user->projects;
+
+        //查找关于该用户的任务，执行中，计划中，已完成三种
         $project = Project::find($id);
         //$tasks = Project::find($id)->tasks();
         $runTasks = Project::find($id)->tasks()->where('flag','=',1)->get();
         $planTasks = Project::find($id)->tasks()->where('flag','=',0)->get();
         $finishTasks = Project::find($id)->tasks()->where('flag','=',2)->get();
         //dd($planTasks);
-        return view('nweaver.project.task',['project'=>$project,
+        return view('nweaver.project.taskmodel',['project'=>$project,
             'runTasks'=>$runTasks,'planTasks'=>$planTasks,'finishTasks'=>$finishTasks,
-            'project_id'=>$id]);
+            'project_id'=>$id ,'ownProjects'=>$ownProjects]);
     }
 
     /**
